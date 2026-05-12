@@ -1,0 +1,228 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
+:root{
+    /*Pesos de fuente*/
+    --peso-light: 300;
+    --peso-normal: 400;
+    --peso-medium: 500;
+    --peso-bold: 700;
+    --peso-black: 900;
+    /*Colores*/
+    --color-principal: #6c63ff;
+    --color-secundario: #2d2d2d;
+    --color-fondo: #f5f5f5;
+    --color-texto: #131313;
+    --color-hover: #8b84ff;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+}
+
+header{
+    position: fixed;
+    top:0;
+    width: 100%;
+    background-color: white;
+    border-bottom: 1px solid #ddd;
+    padding: 20px 50px;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul{
+    display: flex;
+    gap: 30px;
+}
+
+nav a{
+    color: var(--color-texto);
+    transition: 0.3s;
+    font-weight: var(--medium);
+    position:relative;
+}
+
+nav a:hover{
+    color: var(--color-principal);
+}
+
+nav a::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0%;
+    height: 2px;
+    background-color: var(--color-principal);
+    transition: 0.3s;
+}
+
+nav a:hover::after{
+    width: 100%;
+}
+
+.logo{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--color-principal);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: var(--black);
+    font-size: 20px;
+}
+
+/* CUERPO */
+
+.cuerpo{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 80px;
+    padding: 120px 50px;
+}
+
+.cuerpo img{
+    width: 350px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid white;
+}
+
+.cuerpo div{
+    max-width: 600px;
+}
+
+.cuerpo h1{
+    font-size: 60px;
+    margin-bottom: 20px;
+    font-weight: var(--black);
+}
+
+.cuerpo p{
+    line-height: 1.8;
+    font-size: 18px;
+    font-weight: var(--regular);
+}
+
+/* HAMBURGUESA */
+
+.hamburguesa{
+    display: none;
+    font-size: 35px;
+    cursor: pointer;
+}
+
+/*CONTACTO*/
+
+/* CENTRAR FORMULARIO */
+form{
+    width: 100%;
+    max-width: 500px;
+    margin: 120px auto;
+    padding: 40px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: -10px;
+}
+
+/* LABELS */
+label{
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+/* INPUTS Y TEXTAREA */
+input, textarea{
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+/* EFECTO AL HACER CLICK */
+input:focus,
+textarea:focus{
+    border-color: var(--color-principal);
+    outline: none;
+}
+
+/* TEXTAREA */
+textarea{
+    min-height: 120px;
+    resize: none;
+}
+
+/* BOTÓN */
+button{
+    padding: 12px;
+    background-color: var(--color-principal);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* HOVER BOTÓN */
+button:hover{
+    background-color: var(--color-hover);
+}
+
+/*CONTACTO*/
+
+.contacto{
+    padding: 120px 50px;
+    text-align: center;
+    text-decoration: underline rgb(175, 44, 223);
+}
+
+.parrafo{
+    padding: 50px;
+    text-align: center;
+    margin-top: -150px;
+    color: grey;
+}
+
+/* RESPONSIVE */
+
+@media(max-width: 768px){
+
+    nav ul{
+        display: none;
+    }
+
+    .hamburguesa{
+        display: block;
+    }
+
+    .cuerpo{
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .cuerpo h1{
+        font-size: 40px;
+    }
+
+    .cuerpo img{
+        width: 250px;
+        height: 250px;
+    }
+}

@@ -1,0 +1,41 @@
+/*Normalizar márgenes, padding y box-sizing*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /*Para que el padding no afecte al tamaño total del elemento*/
+}
+
+/*Resetear listas*/
+ul ol{
+  list-style: none;
+}
+
+/*Resetear enlaces*/
+a{
+  text-decoration: none;
+  color: inherit; /*Para que el enlace herede el color del texto*/
+}
+
+/*Resetear imágenes*/
+img{
+  max-width: 100%;
+  display: block; /*Para eliminar el espacio debajo de la imagen*/
+}
+
+/*Resetear botones e inputs*/
+button, input, textarea{
+  border: none;
+  background: none;
+  outline: none;
+  font-family: inherit; /*Para que el botón herede la fuente del texto*/
+  cursor: pointer; /*Para que el cursor cambie a pointer al pasar por el botón*/
+}
+
+ul{
+    padding: 0;
+}
+
+li{
+    list-style: none;
+}
