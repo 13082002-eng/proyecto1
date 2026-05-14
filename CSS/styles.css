@@ -9,7 +9,9 @@
     --peso-black: 900;
     /*Colores*/
     --color-principal: #6c63ff;
-    --color-secundario: #2d2d2d;
+
+
+    --color-secundario: #aca4a4;
     --color-fondo: #f5f5f5;
     --color-texto: #131313;
     --color-hover: #8b84ff;
@@ -200,6 +202,37 @@ button:hover{
     color: grey;
 }
 
+/* FOOTER */
+
+footer{
+    background-color: black;
+    text-align: center;
+    padding: 70px 0;
+    margin-top: 50px;
+}
+
+footer p{
+    color: white;
+    font-size: 14px;
+}
+
+footer a{
+    color: white;
+    margin: 0 15px;
+    transition: 0.3s;
+}
+
+footer a:hover{
+    color: var(--color-principal);
+}
+
+p{
+    margin-top: 30px;
+    font-size: 14px;
+    color: #000000da;
+}
+
+
 /* RESPONSIVE */
 
 @media(max-width: 768px){
@@ -224,5 +257,208 @@ button:hover{
     .cuerpo img{
         width: 250px;
         height: 250px;
+    }
+}
+
+/* ABOUT */
+
+.about .logo{
+    color:white;
+    background-color: #3498db;
+}
+
+/* FOTO POLAROID + CONTENIDO */
+
+.titulo{
+    text-align: center;
+    margin-top: 150px;
+    margin-bottom: 70px;
+}
+
+.titulo h1{
+    font-size: 45px;
+    text-decoration: underline #3498db;
+    text-underline-offset: 12px;
+}
+
+.titulo p{
+    margin-top: 25px;
+    color: gray;
+}
+
+/* SECCION SOBRE MI */
+
+.Sobremi{
+    display: flex;
+    margin-top: -50px;
+    justify-content: center;
+    align-items: center;
+    gap: 70px;
+    padding: 50px;
+    flex-wrap: wrap;
+}
+
+/* FOTO POLAROID */
+
+.foto-polaroid{
+    width: 270px;
+    background-color: white;
+    padding: 20px 20px 60px 20px;
+    text-align: center;
+}
+
+.foto-polaroid img{
+    width: 100%;
+    display: block;
+}
+
+.foto-polaroid h1{
+    margin-top: 25px;
+    letter-spacing: 10px;
+    font-size: 50px;
+    color: #244766;
+}
+
+/* CONTENIDO */
+
+.contenido{
+    max-width: 650px;
+}
+
+.contenido h2{
+    font-size: 45px;
+
+    margin-bottom: 20px;
+
+    color: #1d3557;
+}
+
+.contenido h3{
+    color: #3498db;
+
+    margin-bottom: 30px;
+
+    font-size: 25px;
+}
+
+.contenido p{
+    line-height: 1.8;
+
+    color: #333;
+
+    margin-bottom: 35px;
+}
+
+/* BOTONES */
+
+.botones{
+    display: flex;
+
+    gap: 20px;
+}
+
+.boton{
+    text-decoration: none;
+
+    background-color: #3498db;
+
+    color: white;
+
+    padding: 14px 24px;
+
+    border-radius: 8px;
+
+    transition: 0.3s;
+}
+
+.boton:hover{
+    background-color: #217dbb;
+}
+
+/*EXPERIENCIA y EDUCACIÓN*/
+
+.experiencia, .educacion{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.experiencia h1, .educacion h1{
+    margin-left: 330px;
+}
+
+.experiencia h1, .educacion h1, .valores h1{
+    font-size: 40px;
+    color: #1d3557;
+    margin-top: 50px;
+    text-decoration: underline rgb(236, 128, 146);
+    text-underline-offset: 12px;
+}
+
+
+.CGI, .tiendas, .McDonald, .equitacion, .monitora, .TheBridge, .MEDAC, .PadrePiquer{
+    background-color: rgb(252, 246, 246);
+    padding: 40px;
+    border-radius: 12px;
+    border-left: #3498db 5px solid;
+    margin-left: 330px;
+}
+
+.fecha{
+    color: #3498db;
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+/* VALORES */
+
+.valores {
+    max-width: 1200px;
+    margin: 80px auto;
+}
+
+/* GRID */
+.valores {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    padding: 0 40px;
+}
+
+/* El título ocupa toda la fila */
+.valores > h1 {
+    grid-column: 1 / -1;
+}
+
+/* TARJETAS */
+.valores div {
+    background-color: white;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    padding: 35px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+}
+
+/* TITULOS */
+.valores h2 {
+    color: #2f80ed;
+    margin-bottom: 20px;
+    font-size: 26px;
+}
+
+/* TEXTO */
+.valores p {
+    line-height: 1.7;
+    font-size: 18px;
+}
+
+body.about {
+    background-color: #f5f5f5;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .valores {
+        grid-template-columns: 1fr;
     }
 }
