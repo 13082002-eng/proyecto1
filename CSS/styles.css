@@ -29,6 +29,7 @@ header{
     background-color: white;
     border-bottom: 1px solid #ddd;
     padding: 20px 50px;
+    z-index: 1000;
 }
 
 nav{
@@ -45,7 +46,7 @@ nav ul{
 nav a{
     color: var(--color-texto);
     transition: 0.3s;
-    font-weight: var(--medium);
+    font-weight: var(--peso-medium);
     position:relative;
 }
 
@@ -77,7 +78,6 @@ nav a:hover::after{
     display: flex;
     justify-content: center;
     align-items: center;
-    font-weight: var(--black);
     font-size: 20px;
 }
 
@@ -108,13 +108,12 @@ nav a:hover::after{
 .cuerpo h1{
     font-size: 60px;
     margin-bottom: 20px;
-    font-weight: var(--black);
 }
 
 .cuerpo p{
     line-height: 1.8;
     font-size: 18px;
-    font-weight: var(--regular);
+    font-weight: var(--peso-normal);
 }
 
 /* HAMBURGUESA */
@@ -131,7 +130,7 @@ nav a:hover::after{
 form{
     width: 100%;
     max-width: 500px;
-    margin: 120px auto;
+    margin: 40px auto 0;
     padding: 40px;
     background-color: white;
     border-radius: 12px;
@@ -139,7 +138,6 @@ form{
     display: flex;
     flex-direction: column;
     gap: 15px;
-    margin-top: -10px;
 }
 
 /* LABELS */
@@ -384,7 +382,10 @@ p{
 }
 
 .experiencia h1, .educacion h1{
-    margin-left: 330px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+    margin-left: 350px;
 }
 
 .experiencia h1, .educacion h1, .valores h1{
@@ -493,7 +494,7 @@ body.about {
 }
 
 .logoContacto{
-        width: 50px;
+    width: 50px;
     height: 50px;
     border-radius: 50%;
     background-color:rgb(175, 44, 223);
@@ -501,7 +502,35 @@ body.about {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-weight: var(--black);
     font-size: 20px;
+}
+
+@media(max-width:768px){
+
+    .Sobremi{
+        flex-direction: column;
+        text-align:center;
+    }
+
+    .botones{
+        flex-direction: column;
+    }
+
+    .experiencia h1,
+    .educacion h1{
+        margin-left:0;
+        text-align:center;
+    }
+
+    .CGI,
+    .tiendas,
+    .McDonald,
+    .equitacion,
+    .monitora,
+    .TheBridge,
+    .MEDAC,
+    .PadrePiquer{
+        margin-left:0;
+    }
 }
 
