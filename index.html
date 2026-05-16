@@ -9,21 +9,7 @@
 </head>
 
 <body>
-<header>
-  <nav>
-    <a href="index.html" class="logo">IS</a>
-
-    <ul>
-      <li><a href="about.html">About</a></li>
-      <li><a href="#">Skills</a></li>
-      <li><a href="#">Cheatsheets</a></li>
-      <li><a href="#">Recursos</a></li>
-      <li><a href="contacto.html">Contacto</a></li>
-    </ul>
-    <div class="hamburguesa">☰</div>
-  </nav>
-</header>
-
+<div id="header"></div>
 <main>
 
   <section class="cuerpo">
@@ -36,18 +22,70 @@
         y estoy aprendiendo sobre aplicaciones modernas y APIs, ademas trabajo en una consultora y dando clases. Me encanta hacer voluntariados, al que más voy está en Ávila, es un refugio de animales, me gusta mucho ayudar a los animales y pasar tiempo con ellos.
       </p>
     </div>
+    
   </section>
 
-</main>
+  
 
-  <footer class="footerIndex">
-      <a href="https://github.com/13082002-eng" target="_blank" rel="noopener noreferrer">GitHub</a>
-      <a href="https://www.linkedin.com/feed/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      <a href="index.html">Home</a>
-      <a href="about.html" target="_blank" rel="noopener noreferrer">About</a>
-      <a href="contacto.html" target="_blank" rel="noopener noreferrer">Contacto</a>
-      <p>© 2026 Inés Sacristán Galdeano. Todos los derechos reservados.</p>
-    </footer>
+  <section id="skills" class="skills-section">
+
+    <h1>Skills</h1>
+
+    <div id="skills-container"></div>
+
+</section>
+
+<section id="cheatsheets" class="cheatsheets-section">
+
+    <h1>Cheatsheets</h1>
+
+    <div id="cheatsheets-container"></div>
+
+</section>
+
+<section class="projects-section">
+
+    <h1>Proyectos en progreso</h1>
+    <p>Algunos proyectos en los que estoy trabajando actualmente.</p>
+
+    <div class="projects-container">
+
+        <article class="project-card">
+
+            <h3>Portfolio Full Stack</h3>
+
+            <p>
+                Portfolio personal desarrollado con HTML, CSS y JavaScript modular,
+                incluyendo dark mode, cheatsheets, recursos y API del clima.
+            </p>
+
+            <div class="project-tags">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
+            </div>
+
+            <div class="project-buttons">
+                <a href="https://github.com/13082002-eng/proyecto1" target="_blank">
+                    Ver en GitHub
+                </a>
+
+                <a href="./demo.html" target="_blank">
+                    Demo en vivo
+                </a>
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+</main>
+<div id="footer"></div>
+
+
+<script type="module" src="./JAVASCRIPT/main.js"></script>
 
 </body>
 </html>

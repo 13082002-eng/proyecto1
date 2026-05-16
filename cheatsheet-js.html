@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cheatsheet HTML</title>
+
+    <link rel="stylesheet" href="CSS/reset.css">
+    <link rel="stylesheet" href="CSS/styles.css">
+</head>
+
+<body class="home">
+
+<div id="header"></div>
+
+<main class="cheatsheet-layout">
+
+    <!-- MENU STICKY -->
+    <aside class="sticky-nav">
+
+        <a href="#variables">Variables</a>
+        <a href="#tipos">Tipos</a>
+        <a href="#templateString">Template Strings</a>
+        <a href="#comentarios">Comentarios</a>
+        <a href="#operadores">Operadores</a>
+        <a href="#control">Control</a>
+        <a href="#funciones">Funciones</a>
+        <a href="#arrays">Arrays</a>
+        <a href="#strings">Strings</a>
+        <a href="#numeros">Números</a>
+        <a href="#modulos">Módulos</a>
+        <a href="#DOM">DOM</a>
+        <a href="#promesas">Promesas</a>
+        <a href="#fetch/async">Fetch / Async</a>
+        <a href="#date">Date</a>
+        <a href="#storage">Storage</a>
+        <a href="#objetos">Objetos / JSON</a>
+        <a href="#extras">Extras</a>
+
+    </aside>
+
+    <!-- CONTENIDO -->
+    <section class="cheatsheet-content">
+
+        <h1>JavaScript</h1>
+
+        <p>
+           Guía rápida de JavaScript moderno: variables, tipos, template strings, operadores, control de flujo, funciones, arrays/strings/números, módulos, DOM, asincronía (promesas/fetch), fechas, storage y objetos/JSON.
+        </p>
+
+        <article id="variables">
+
+            <h2>Variables</h2>
+
+            <p><em>Usa const por defecto. let si cambia. Evita var.</em></p>
+
+            <pre><code>
+// var (EVITAR)
+var nombre = "Juan";
+var nombre = "Pedro";   // redeclarar ✅
+nombre = "Carlos";      // reasignar ✅
+
+// Scope: función / global (NO bloque)
+if (true) {
+  var mensaje = "Hola desde var";
+}
+console.log(mensaje);   // ✅ funciona (var ignora bloque)
+
+// let (cambia)
+let edad = 30;
+edad = 35;              // reasignar ✅
+// let edad = 40;       // ❌ redeclarar en el mismo bloque
+
+// Scope: bloque
+if (true) {
+  let saludo = "Hola desde let";
+  console.log(saludo);
+}
+// console.log(saludo); // ❌ fuera del bloque
+
+// const (fijo / referencia estable)
+const PI = 3.1416;
+// PI = 3.15;           // ❌ no reasignar
+            </code></pre>
+            <p class="tip"><strong>const </strong> no “congela” objetos/arrays, solo evita reasignar la variable.</p>
+        </article>
+
+        <article id="tipos">
+
+            <h2>Tipos de datos</h2>
+            <p><em>Primitivos (valor) vs complejos (referencia) + typeof.</em></p>
+
+            <pre><code>
+// Primitivos
+const texto = "JavaScript";   // string
+const entero = 42;            // number
+const esActivo = true;        // boolean
+let indefinido;               // undefined
+const vacio = null;           // null
+const simbolo = Symbol("id"); // symbol
+const grande = BigInt(1);     // bigint
+
+// Complejos
+const persona = { nombre: "Ana", edad: 25 };
+const frutas = ["🍎", "🍌"];
+function saludar(n) { return `Hola ${n}`; }
+
+// Copia por valor (primitivo)
+let a = 5;
+let b = a;
+b = 10;
+console.log(a); // 5
+
+// Copia por referencia (objeto)
+let obj1 = { nombre: "Juan" };
+let obj2 = obj1;
+obj2.nombre = "Pedro";
+console.log(obj1.nombre); // "Pedro"
+
+// typeof
+console.log(typeof "Hola");      // "string"
+console.log(typeof 42);          // "number"
+console.log(typeof null);        // "object" (histórico)
+console.log(typeof []);          // "object"
+console.log(typeof function(){});// "function"
+            </code></pre>
+
+        </article>
+
+        <article id="templateString">
+
+            <h2>Template Strings</h2>
+            <p><em>Interpolación + multilínea + expresiones.</em></p>
+
+            <pre><code>
+const nombre = "Juan";
+const edad = 30;
+
+console.log(`Hola, soy ${nombre} y tengo ${edad} años.`);
+
+const precio = 100;
+const iva = 0.21;
+console.log(`Total: ${precio * (1 + iva)}€`);
+
+const multi = `
+Línea 1
+Línea 2
+`;
+            </code></pre>
+
+        </article>
+
+        <article id="comentarios">
+
+            <h2>Comentarios</h2>
+            <p><em>Línea, bloque y documentación (JSDoc).</em></p>
+
+            <pre><code>
+// Una línea
+console.log("Hola");
+
+/*
+Bloque
+multi-línea
+*/
+
+/**
+ * @param {string} nombre
+ * @returns {string}
+ */
+function saludar(nombre) {
+  return `Hola, ${nombre}`;
+}
+            </code></pre>
+        </article>
+
+        <article id="operadores">
+
+            <h2>Operadores</h2>
+            <p><em>Aritmética, asignación, comparación, lógica y modernos.</em></p>
+
+            <pre><code>
+// Aritméticos
+5 + 3;
+10 - 4;
+3 * 4;
+20 / 4;
+10 % 3;
+2 ** 3;
+
+// Comparación
+5 == "5";    // true (EVITAR)
+5 === "5";   // false (RECOMENDADO)
+5 !== "5";   // true
+
+// Lógicos
+true && false;
+true || false;
+!true;
+
+// Ternario
+const edad = 18;
+const acceso = edad >= 18 ? "Permitido" : "Denegado";
+
+// Modernos
+const nombre = null;
+console.log(nombre ?? "Anónimo"); // nullish coalescing
+
+const usuario = { direccion: { ciudad: "Madrid" } };
+console.log(usuario.direccion?.ciudad);
+console.log(usuario.contacto?.telefono); // undefined sin error
+            </code></pre>
+            <p class="tip">Regla práctica: usa === y !== casi siempre.</p>
+
+        </article>
+
+        <article id="control">
+
+            <h2>Estructuras de control</h2>
+            <p><em>Bucles + condicionales + break/continue/return.</em></p>
+
+            <pre><code>
+// for
+for (let i = 0; i < 3; i++) console.log(i);
+
+// while
+let c = 0;
+while (c < 2) { c++; }
+
+// do...while
+let intentos = 0;
+do { intentos++; } while (intentos < 1);
+
+// for...of (arrays)
+for (const fruta of ["🍎","🍌"]) console.log(fruta);
+
+// for...in (objetos)
+const persona = { nombre: "Ana", edad: 25 };
+for (const k in persona) console.log(k, persona[k]);
+
+// if / else
+const edad = 20;
+if (edad >= 18) console.log("OK");
+else console.log("NO");
+
+// switch
+const dia = "Lunes";
+switch (dia) {
+  case "Lunes": console.log("Inicio"); break;
+  default: console.log("Normal");
+}
+
+// break / continue
+for (let i = 0; i < 5; i++) {
+  if (i === 2) continue;
+  if (i === 4) break;
+  console.log(i);
+}
+            </code></pre>
+
+        </article>
+
+        <article id="funciones">
+
+            <h2>Funciones</h2>
+            <p><em>Declaradas, expresadas, arrow, orden superior, defaults y recursión.</em></p>
+
+            <pre><code>
+// Declarada
+function saludar(nombre) {
+  return `Hola, ${nombre}`;
+}
+
+// Expresada
+const despedir = function (nombre) {
+  return `Adiós, ${nombre}`;
+};
+
+// Arrow
+const sumar = (a, b) => a + b;
+
+// Arrow con bloque
+const multiplicar = (a, b) => {
+  const r = a * b;
+  return r;
+};
+
+// Orden superior
+function operar(a, b, op) {
+  return op(a, b);
+}
+const res = operar(4, 2, (x, y) => x * y);
+
+// Defaults
+function saludarPersona(nombre = "Anónimo") {
+  console.log(`Hola, ${nombre}`);
+}
+
+// Recursiva
+function cuentaRegresiva(n) {
+  if (n === 0) return console.log("BOOM");
+  console.log(n);
+  cuentaRegresiva(n - 1);
+}
+        </code></pre>
+        <p class="tip">Arrow function: no tiene su propio <strong>this </strong> (importante en objetos/clases).</p>
+        </article>
+
+        <article id="arrays">
+
+            <h2>Métodos de Array</h2>
+            <p><em>Mutables vs inmutables (recomendado) + iteración.</em></p>
+
+            <pre><code>
+// Mutan el array
+const nums = [1,2,3];
+nums.push(4);
+nums.pop();
+nums.shift();
+nums.unshift(0);
+nums.splice(1, 1, 99);
+nums.reverse();
+["b","a","c"].sort();
+
+// NO mutan (preferidos)
+const a = [1,2,3,4,5];
+
+const cuadrados = a.map(n => n ** 2);
+const pares = a.filter(n => n % 2 === 0);
+const suma = a.reduce((acc, n) => acc + n, 0);
+const encontrado = a.find(n => n > 3);
+const hayPares = a.some(n => n % 2 === 0);
+const todosPos = a.every(n => n > 0);
+
+a.includes(3);
+a.indexOf(3);
+a.slice(1, 3);
+a.concat([6,7]);
+a.join(" - ");
+
+a.forEach(n => console.log(n));
+        </code></pre>
+        <p class="tip">Regla práctica: map/filter/reduce para transformar; evita mutar si no hace falta.</p>
+        </article>
+
+        <article id="strings">
+
+            <h2>Métodos de String</h2>
+            <p><em>Transformar, buscar y cortar.</em></p>
+
+            <pre><code>
+const texto = "JavaScript es genial";
+
+texto.toUpperCase();
+texto.toLowerCase();
+"  Hola  ".trim();
+texto.replace("genial", "increíble");
+texto.slice(0, 10);
+texto.substring(0, 10);
+texto.split(" ");
+"Hola".concat(" ", "mundo");
+"Hola ".repeat(3);
+
+const frase = "Aprender JavaScript es divertido";
+frase.indexOf("JavaScript");
+frase.lastIndexOf("es");
+frase.includes("JavaScript");
+frase.startsWith("Aprender");
+frase.endsWith("divertido");
+        </code></pre>
+        </article>
+        
+        <article id="numeros">
+
+            <h2>Métodos de Número</h2>
+            <p><em>Formateo, parseo y Math.</em></p>
+
+            <pre><code>
+const n = 42.5678;
+
+n.toFixed(2);       // "42.57"
+n.toPrecision(4);   // "42.57"
+n.toString();
+
+Number.isInteger(42);
+Number.parseInt("42.9");
+Number.parseFloat("42.567");
+Number.isNaN("Hola" * 3);
+
+Math.round(4.6);
+Math.floor(4.9);
+Math.ceil(4.1);
+Math.trunc(4.9);
+Math.random();
+Math.max(10, 20, 30);
+Math.min(10, 20, 30);
+Math.pow(2, 3);
+Math.sqrt(25);
+Math.abs(-42);
+            </code></pre>
+        </article>
+
+        <article id="modulos">
+
+            <h2>Módulos (ESM)</h2>
+            <p><em>Export / import (tu proyecto ya usa type="module").</em></p>
+
+            <pre><code>
+// miModulo.js
+export const saludar = (nombre) => `Hola, ${nombre}`;
+
+const mensaje = "Bienvenido";
+export default mensaje;
+
+// app.js
+import mensaje, { saludar } from "./miModulo.js";
+console.log(mensaje);
+console.log(saludar("Ana"));
+
+// Importar todo
+import * as miModulo from "./miModulo.js";
+console.log(miModulo.saludar("Pedro"));
+            </code></pre>
+        </article>
+
+        <article id="DOM">
+
+            <h2>DOM</h2>
+            <p><em>Seleccionar, cambiar contenido, clases, crear nodos y eventos.</em></p>
+
+            <pre><code>
+// Selección
+const titulo = document.getElementById("titulo");
+const uno = document.querySelector(".clase");
+const todos = document.querySelectorAll(".clase");
+
+// Contenido
+titulo.textContent = "Nuevo título";
+titulo.innerHTML = "<b>Negrita</b>"; // Ojo: solo si confías en el contenido
+
+// Atributos
+titulo.setAttribute("data-id", "123");
+titulo.removeAttribute("id");
+
+// Estilos
+titulo.style.color = "red";
+
+// Clases
+titulo.classList.add("destacado");
+titulo.classList.toggle("activo");
+
+// Crear / insertar
+const p = document.createElement("p");
+p.textContent = "Nuevo párrafo";
+document.body.appendChild(p);
+
+// InsertAdjacentHTML
+const cont = document.getElementById("contenedor");
+cont.insertAdjacentHTML("beforeend", "<p>Al final</p>");
+
+// Eventos
+const boton = document.getElementById("boton");
+boton.addEventListener("click", () => console.log("click"));
+
+// Navegación DOM
+const el = document.querySelector(".item");
+console.log(el.parentNode);
+console.log(el.children);
+console.log(el.nextElementSibling);
+            </code></pre>
+            <p class="tip">Preferible <strong>textContent</strong> antes que <strong>innerHTML</strong> para evitar XSS.</p>
+        </article>
+
+        <article id="promesas">
+
+            <h2>Promesas</h2>
+            <p><em>then/catch/finally + all/race.</em></p>
+
+            <pre><code>
+const promesa = new Promise((resolve, reject) => {
+  const ok = true;
+  if (ok) resolve("✅ OK");
+  else reject("❌ Error");
+});
+
+promesa
+  .then(r => console.log(r))
+  .catch(e => console.error(e))
+  .finally(() => console.log("Fin"));
+
+// Múltiples
+const p1 = Promise.resolve("Primera");
+const p2 = Promise.resolve("Segunda");
+
+Promise.all([p1, p2]).then(console.log);   // ["Primera","Segunda"]
+Promise.race([p1, p2]).then(console.log);  // "Primera"
+            </code></pre>
+        </article>
+
+        <article id="fetch/async">
+
+            <h2>Fetch / Async-Await</h2>
+            <p><em>GET/POST + manejo de errores con response.ok.</em></p>
+
+            <pre><code>
+// Fetch (then)
+fetch("https://jsonplaceholder.typicode.com/posts/1")
+  .then(res => {
+    if (!res.ok) throw new Error("HTTP Error");
+    return res.json();
+  })
+  .then(data => console.log(data))
+  .catch(err => console.error(err));
+
+// Fetch (POST)
+fetch("https://jsonplaceholder.typicode.com/posts", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ title: "Nuevo", body: "Texto" }),
+})
+  .then(res => res.json())
+  .then(console.log)
+  .catch(console.error);
+
+// Async/Await
+async function obtenerPokemon(id) {
+  try {
+    const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
+    if (!res.ok) throw new Error(res.status);
+    const data = await res.json();
+    return data;
+  } catch (e) {
+    console.error("Error:", e);
+  } finally {
+    console.log("Fin");
+  }
+}
+            </code></pre>
+            <p class="tip"><strong>fetch</strong>NO lanza error por 404/500:revisa <strong>res.ok</strong></p>
+        </article>
+
+        <article id="date">
+
+            <h2>Fechas (Date)</h2>
+            <p><em>Crear, leer, modificar y formatear.</em></p>
+
+            <pre><code>
+const ahora = new Date();
+const fecha = new Date(2025, 2, 15, 10, 30, 0);  // mes 0-11
+const desdeISO = new Date("2025-03-15T10:30:00");
+
+ahora.getFullYear();
+ahora.getMonth();
+ahora.getDate();
+ahora.getDay();
+ahora.getTime();
+
+ahora.setFullYear(2030);
+ahora.setMonth(11);
+ahora.setDate(25);
+
+ahora.toISOString();
+ahora.toLocaleDateString("es-ES");
+ahora.toLocaleTimeString("es-ES");
+
+const opts = { year: "numeric", month: "long", day: "numeric" };
+ahora.toLocaleDateString("es-ES", opts);
+            </code></pre>
+        </article>
+
+        <article id="storage">
+
+            <h2>Storage (browser)</h2>
+            <p><em>localStorage, sessionStorage y cookies.</em></p>
+
+            <pre><code>
+// localStorage (persistente)
+localStorage.setItem("nombre", "Juan");
+localStorage.setItem("config", JSON.stringify({ tema: "oscuro" }));
+
+const nombre = localStorage.getItem("nombre");
+const config = JSON.parse(localStorage.getItem("config"));
+
+localStorage.removeItem("nombre");
+localStorage.clear();
+
+// sessionStorage (pestaña)
+sessionStorage.setItem("usuario", "Ana");
+sessionStorage.getItem("usuario");
+sessionStorage.clear();
+
+// Cookies (simple)
+document.cookie = "idioma=es; expires=Fri, 31 Dec 2030 23:59:59 GMT; path=/";
+
+function getCookie(nombre) {
+  const valor = `; ${document.cookie}`;
+  const partes = valor.split(`; ${nombre}=`);
+  if (partes.length === 2) return partes.pop().split(";").shift();
+}
+            </code></pre>
+            <p class="tip">localStorage: fácil, pero no guardes secretos (tokens sensibles) ahí.</p>
+        </article>
+
+        <article id="objetos">
+
+            <h2>Objetos y JSON</h2>
+            <p><em>CRUD de propiedades + métodos de Object + stringify/parse.</em></p>
+
+            <pre><code>
+const persona = {
+  nombre: "Juan",
+  edad: 30,
+  saludar() { return `Hola, soy ${this.nombre}`; },
+};
+
+persona.edad = 31;
+persona.ciudad = "Madrid";
+delete persona.ciudad;
+
+for (const k in persona) console.log(k, persona[k]);
+
+Object.keys(persona);
+Object.values(persona);
+Object.entries(persona);
+
+const copia = Object.assign({}, persona, { pais: "ES" });
+
+Object.freeze(persona); // bloquea cambios
+// persona.edad = 40;    // no cambia
+
+// JSON
+const datos = { nombre: "Ana", edad: 25 };
+const json = JSON.stringify(datos);
+const obj = JSON.parse(json);
+            </code></pre>
+        </article>
+
+        <article id="extras">
+
+            <h2>Otros útiles</h2>
+            <p><em>Map, Set, URLSearchParams, RegExp, Intl, console y timers.</em></p>
+
+            <pre><code>
+// Map
+const mapa = new Map();
+mapa.set("nombre", "Juan");
+mapa.get("nombre");
+mapa.has("nombre");
+
+// Set
+const set = new Set([1,2,2,3]);
+set.add(4);
+set.has(3);
+set.delete(2);
+
+// URLSearchParams
+const params = new URLSearchParams("?nombre=Juan&edad=30");
+params.get("nombre");
+params.set("ciudad", "Madrid");
+params.toString();
+
+// RegExp
+const regex = /\d+/g;
+"Mi num 123 y 456".match(regex);
+
+// Intl
+new Intl.NumberFormat("es-ES").format(1234567.89);
+
+// console
+console.table([{ nombre: "Juan", edad: 30 }]);
+
+// timers
+const id = setTimeout(() => console.log("2s"), 2000);
+clearTimeout(id);
+
+const intId = setInterval(() => console.log("tick"), 1000);
+setTimeout(() => clearInterval(intId), 5000);
+            </code></pre>
+            <p class="tip">Para depurar rápido: <strong>console.table + console.group.</strong></p>
+        </article>
+
+
+<article id="resumen">
+
+    <h2>Resumen</h2>
+
+    <ul class="best-practices">
+
+        <li>
+            <strong>const</strong> por defecto, <strong>let</strong> si cambia, evita <strong>var</strong>.
+        </li>
+
+        <li>
+            Usa ===, funciones pequeñas y arrays inmutables (<strong>map/filter/reduce</strong>).
+        </li>
+
+        <li>
+            DOM: <strong>querySelector, classList,</strong> eventos con <strong>addEventListener</strong>.
+        </li>
+
+        <li>
+            Async: <strong>async/await + try/catch + response.ok</strong>.
+        </li>
+
+        <li>
+            Persistencia: <strong>localStorage</strong> (no secretos), <strong>sessionStorage</strong> (pestaña), cookies (más control).
+        </li>
+
+    </ul>
+
+</article>
+
+    </section>
+
+
+</main>
+
+<div id="footer"></div>
+
+<script type="module" src="./JAVASCRIPT/main.js"></script>
+
+</body>
+
+</html>

@@ -8,27 +8,17 @@
   <link rel="stylesheet" href="CSS/styles.css">
 </head>
 
-<body>
-
-<header>
-  <nav class="NavContacto">
-    <a href="index.html" class="logoContacto">IS</a>
-
-    <ul>
-      <li><a href="about.html">About</a></li>
-      <li><a href="#">Skills</a></li>
-      <li><a href="#">Cheatsheets</a></li>
-      <li><a href="#">Recursos</a></li>
-      <li><a href="contacto.html">Contacto</a></li>
-    </ul>
-    <div class="hamburguesa">☰</div>
-  </nav>
-</header>
-
+<body class="contacto">
+<div id="header"></div>
 <main>
     <h1 class="contacto">Contacto</h1>
     <p class="parrafo">¿Tienes alguna pregunta o propuesta? Rellena el formulario y me pondré en contacto contigo lo antes posible.</p>
-    <form action="">
+    <form action="https://formsubmit.co/inessacristan13@gmail.com" method="POST">
+
+    <input type="hidden" name="_subject" value="Nuevo mensaje desde CV Portfolio">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_template" value="table">
+    
         <label for="name">Nombre:</label>
         <input type="text" id="name" name="name" placeholder="Tu nombre" required>
     
@@ -44,15 +34,9 @@
         <button type="submit">Enviar</button>
     </form>
 </main>
+<div id="footer"></div>
 
-    <footer class="footerContacto">
-      <a href="https://github.com/13082002-eng" target="_blank" rel="noopener noreferrer">GitHub</a>
-      <a href="https://www.linkedin.com/feed/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="contacto.html">Contacto</a>
-      <p>© 2026 Inés Sacristán Galdeano. Todos los derechos reservados.</p>
-    </footer>
+<script type="module" src="./JAVASCRIPT/main.js"></script>
 
 </body>
 </html>
